@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/flag_iran" android:state_checked="true"/>
+    <item android:drawable="@drawable/flag_iran_notselected"/>
+
+</selector>
