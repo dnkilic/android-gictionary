@@ -2,19 +2,27 @@ package com.dnkilic.gictionary;
 
 public enum Language {
 
-    ENGLISH("en"),
-    TURKISH("tr"),
-    FRENCH("fr"),
-    GERMAN("de"),
     ARABIC("ar"),
+    ARMENIAN("hy"),
     BOSNIAN("bs"),
     BULGARIAN("bg"),
+    CHINESE("zh"),
+    FRENCH("fr"),
+    GERMAN("de"),
+    GREEK("el"),
+    HINDI("hi"),
     PERSIAN("fa"),
+    HEBREW("he"),
     ITALIAN("it"),
-    KURDISH("ku"),
-    ARMENIAN("hy"),
+    JAPANESE("ja"),
+    URDU("ur"),
+    PORTUGUESE("pt"),
+    RUSSIAN("ru"),
+    SPANISH("es"),
     SWEDISH("sv"),
-    SPANISH("es");
+    TURKISH("tr"),
+    ENGLISH("en"),
+    KURDISH("ku");
 
     private String mLanguage;
 

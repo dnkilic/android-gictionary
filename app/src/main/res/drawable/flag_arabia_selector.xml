@@ -2,6 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@drawable/flag_arabia" android:state_checked="true"/>
-    <item android:drawable="@drawable/flag_arabia_notselected"/>
+    <item android:drawable="@drawable/flag_arabia_not_selected"/>
 
 </selector>

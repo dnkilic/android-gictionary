@@ -8,66 +8,10 @@
     tools:context="com.dnkilic.gictionary.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <LinearLayout
-        android:id="@+id/flContent"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="From Language"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:layout_gravity="center_horizontal|top" />
-
-        <include
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            layout="@layout/from_language_buttons_bar"
-            android:layout_gravity="center" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="To Language"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:layout_gravity="center_horizontal|top" />
-
-        <include
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            layout="@layout/to_language_buttons_bar"
-            android:layout_gravity="center" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="174dp"
-            android:id="@+id/scrollView"
-            android:layout_gravity="center_horizontal" >
-
-        </ScrollView>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal"
-            android:onClick="deneme"/>
-
-    </LinearLayout>
-
-
+        android:id="@+id/flContent">
+    </FrameLayout>
 
 </RelativeLayout>

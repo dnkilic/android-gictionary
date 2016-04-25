@@ -23,98 +23,163 @@ import java.util.Map;
 public class TranslationManager {
 
     private static final String MAKE_TRANSLATE_REQUEST_TAG = "MAKE_TRANSLATE_REQUEST";
-    private TranslationManagerResponse mResponse;
+    private TranslationListener mResponse;
 
-    public TranslationManager(TranslationManagerResponse response) {
+    public TranslationManager(TranslationListener response) {
         mResponse = response;
     }
 
     public void makeTranslationRequest(String fromLanguage, String destLanguage, String phrase) {
 
-        String URL = "https://glosbe.com/gapi_v0_1/translate?";
-
-        Log.d("com.dnkilic.gictionary", "Request : " + "from :" + fromLanguage + "\n" +
-                "dest :" + destLanguage + "\n" +
-                "phrase :" + phrase + "\n" +
-                "pretty :" + "true" + "\n" +
-                "format :" + "json");
-
-        Uri builtUri = Uri.parse(URL).buildUpon()
-                .appendQueryParameter("from", fromLanguage)
-                .appendQueryParameter("dest", destLanguage)
-                .appendQueryParameter("phrase", phrase)
-                .appendQueryParameter("pretty", "true")
-                .appendQueryParameter("format", "json")
-                .build();
-
-        URL url = null;
-
-        try {
-            url = new URL(builtUri.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        if(fromLanguage.equals(destLanguage))
+        {
+            mResponse.onError("Aynı dilde çevirme yapmayı denediniz.");
         }
+        else
+        {
+            String URL = "https://glosbe.com/gapi_v0_1/translate?";
 
-        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.GET, url.toString(),
+            Log.d("com.dnkilic.gictionary", "Request : " + "from :" + fromLanguage + "\n" +
+                    "dest :" + destLanguage + "\n" +
+                    "phrase :" + phrase + "\n" +
+                    "pretty :" + "true" + "\n" +
+                    "format :" + "json");
 
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
+            Uri builtUri = Uri.parse(URL).buildUpon()
+                    .appendQueryParameter("from", fromLanguage)
+                    .appendQueryParameter("dest", destLanguage)
+                    .appendQueryParameter("phrase", phrase)
+                    .appendQueryParameter("pretty", "true")
+                    .appendQueryParameter("format", "json")
+                    .build();
 
-                            JSONObject json = new JSONObject(response.toString());
+            URL url = null;
 
-                            String result = json.getString("result");
+            try {
+                url = new URL(builtUri.toString());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
 
-                            if(result.equals("ok"))
-                            {
-                                JSONArray tucList = json.getJSONArray("tuc");
+            JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.GET, url.toString(),
 
-                                for (int i=0 ; i < tucList.length() ; i++){
-                                    JSONObject tuc = tucList.getJSONObject(i);
-                                    JSONObject phrase = tuc.getJSONObject("phrase");
-                                    JSONObject meanings = tuc.getJSONObject("meanings");
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
 
-                                    ArrayList<String> meaningList = new ArrayList<>();
+                                JSONObject json = new JSONObject(response.toString());
 
+                                String result = json.getString("result");
 
-                                    for (int j=0 ; i < meanings.length() ; j++)
+                                if(result.equals("ok"))
+                                {
+                                    ArrayList<Word> words = new ArrayList<>();
+
+                                    JSONArray tucList = null;
+
+                                    try {
+                                        tucList = json.getJSONArray("tuc");
+                                    }catch (Exception e)
                                     {
-                                        JSONObject meaning = tucList.getJSONObject(j);
-                                        meaningList.add(meaning.getString("text"));
+                                        e.printStackTrace();
+                                        mResponse.onError("Aranan kelime bulunamadı.");
                                     }
 
-                                    mResponse.onSuccess(new Word(phrase.getString("text"), meaningList));
+                                    if(tucList != null)
+                                    {
+                                        for (int i=0 ; i < tucList.length() ; i++){
+                                            JSONObject tuc = tucList.getJSONObject(i);
+
+                                            JSONObject phrase = null;
+
+                                            try {
+                                                phrase = tuc.getJSONObject("phrase");
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                e.printStackTrace();
+                                            }
+
+                                            if(phrase != null)
+                                            {
+                                                JSONArray meanings = null;
+
+                                                try {
+                                                    meanings = tuc.getJSONArray("meanings");
+                                                }
+                                                catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
+
+                                                ArrayList<String> meaningList = new ArrayList<>();
+
+                                                if(meanings != null)
+                                                {
+                                                    for (int j=0 ; j < meanings.length() ; j++)
+                                                    {
+                                                        JSONObject meaning = meanings.getJSONObject(j);
+                                                        meaningList.add(meaning.getString("text"));
+                                                    }
+                                                }
+
+                                                words.add(new Word(phrase.getString("text"), meaningList));
+                                            }
+                                            else
+                                            {
+                                                mResponse.onError("Aranan kelime bulunamadı.");
+                                            }
+                                        }
+
+                                        if(words.isEmpty())
+                                        {
+                                            mResponse.onError("Aranan kelime bulunamadı.");
+                                        }
+                                        else
+                                        {
+                                            mResponse.onSuccess(words);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        mResponse.onError("Aranan kelime bulunamadı.");
+                                    }
                                 }
+                                else
+                                {
+                                    mResponse.onError("Aranan kelime bulunamadı.");
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                mResponse.onError(e.getMessage());
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            mResponse.onError(e.getMessage());
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        mResponse.onError("Bir server hatası oluştu.");
-                    }
-                }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                headers.put("User-agent", System.getProperty("http.agent"));
-                return headers;
-            }
-        };
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                            mResponse.onError("Bir server hatası oluştu.");
+                        }
+                    }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<>();
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+                    headers.put("User-agent", System.getProperty("http.agent"));
+                    return headers;
+                }
+            };
 
-        postRequest.setTag(MAKE_TRANSLATE_REQUEST_TAG);
-        postRequest.setRetryPolicy(new DefaultRetryPolicy(
-                60000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            postRequest.setTag(MAKE_TRANSLATE_REQUEST_TAG);
+            postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    60000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        AppController.getInstance().addToRequestQueue(postRequest);
+            AppController.getInstance().addToRequestQueue(postRequest);
+        }
+
+
     }
 }

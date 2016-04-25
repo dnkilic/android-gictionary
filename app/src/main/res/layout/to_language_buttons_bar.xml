@@ -23,7 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_turkey_selector"
-                android:button="@android:color/transparent" />
+                android:button="@android:color/transparent"
+                android:checked="true"/>
 
             <RadioButton
                 android:id="@+id/btnToSwedish"
@@ -33,17 +34,73 @@
                 android:button="@android:color/transparent" />
 
             <RadioButton
-                android:id="@+id/ftnToSpanish"
+                android:id="@+id/btnToSpanish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_spain_selector"
                 android:button="@android:color/transparent" />
 
             <RadioButton
-                android:id="@+id/btnToIran"
+                android:id="@+id/btnToRussian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_russia_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToPortuguese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_portugal_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToUrdu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_pakistan_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToJapanese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_japan_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToItalian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_italy_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToHebrew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_israel_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToPersian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_iran_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToHindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_india_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToGreek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_greece_selector"
                 android:button="@android:color/transparent" />
 
             <RadioButton
@@ -54,7 +111,7 @@
                 android:button="@android:color/transparent" />
 
             <RadioButton
-                android:id="@+id/btnToFrance"
+                android:id="@+id/btnToFrench"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_france_selector"
@@ -62,14 +119,21 @@
 
 
             <RadioButton
-                android:id="@+id/btnToEngland"
+                android:id="@+id/btnToEnglish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/flag_england_selector"
+                android:background="@drawable/flag_uk_selector"
                 android:button="@android:color/transparent" />
 
             <RadioButton
-                android:id="@+id/btnToBulgaria"
+                android:id="@+id/btnToChinese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_china_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
+                android:id="@+id/btnToBulgarian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_bulgaria_selector"
@@ -77,7 +141,7 @@
 
 
             <RadioButton
-                android:id="@+id/btnToBosnia"
+                android:id="@+id/btnToBosnian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_bosnia_selector"
