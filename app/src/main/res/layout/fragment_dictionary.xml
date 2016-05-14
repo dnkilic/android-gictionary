@@ -13,15 +13,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="From Language"
-            android:textStyle="bold"
-            android:padding="4dp"
-            android:layout_gravity="center_horizontal|top" />
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="From Language : "
+                android:textStyle="bold"
+                android:padding="4dp" />
+
+        </LinearLayout>
 
         <include
             android:layout_width="wrap_content"
@@ -32,15 +39,22 @@
             layout="@layout/from_language_buttons_bar"
             android:layout_gravity="center" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="To Language"
-            android:textStyle="bold"
-            android:padding="4dp"
-            android:layout_gravity="center_horizontal|top" />
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="To Language : "
+                android:textStyle="bold"
+                android:padding="4dp" />
+
+        </LinearLayout>
 
         <include
             android:layout_width="wrap_content"
@@ -53,48 +67,35 @@
 
         <!-- request progress -->
 
-        <ProgressBar
-            android:id="@+id/pbTranslate"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:layout_marginBottom="2dp"
-            android:visibility="gone"
-            android:indeterminate="false" />
-
-        <ListView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:id="@+id/listView"
-            android:layout_gravity="center_horizontal" />
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:id="@+id/editText"
-            android:layout_gravity="center_horizontal" />
+            android:gravity="center_horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.75"
-            android:text="New Button"
-            android:id="@+id/buttonm"
-            android:layout_gravity="center_horizontal" />
+            <ProgressBar
+                android:id="@+id/pbTranslate"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:visibility="gone"
+                android:indeterminate="false"
+                android:layout_gravity="center_horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvWords"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-    <DigitalClock
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/digitalClock"
-        android:layout_gravity="center_vertical" />
 
 
 </LinearLayout>

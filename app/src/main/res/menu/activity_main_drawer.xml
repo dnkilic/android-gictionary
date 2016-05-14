@@ -15,14 +15,9 @@
             android:title="Settings" />
 
         <item
-            android:id="@+id/nav_info"
+            android:id="@+id/nav_credits"
             android:icon="@drawable/ic_action_group"
             android:title="Credits" />
-
-        <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_action_about"
-            android:title="Info" />
     </group>
 
 </menu>

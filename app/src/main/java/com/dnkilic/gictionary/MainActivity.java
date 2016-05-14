@@ -1,14 +1,11 @@
 package com.dnkilic.gictionary;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -19,6 +16,8 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +54,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+
+        mSearchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+
         return true;
     }
 
@@ -74,20 +77,36 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
         Class fragmentClass = null;
 
 
-        if (id == R.id.nav_dictionary) {
+        if (id == R.id.nav_dictionary)
+        {
+            if(mSearchView != null)
+            {
+                mSearchView.setVisibility(View.VISIBLE);
+            }
+
             fragmentClass = DictionaryFragment.class;
+        }
+        else if (id == R.id.nav_settings)
+        {
+            if(mSearchView != null)
+            {
+                mSearchView.setVisibility(View.INVISIBLE);
+            }
 
-        } else if (id == R.id.nav_settings) {
+            fragmentClass = SettingsFragment.class;
+        }
+        else if (id == R.id.nav_credits)
+        {
+            if(mSearchView != null)
+            {
+                mSearchView.setVisibility(View.INVISIBLE);
+            }
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_info) {
             fragmentClass = CreditsFragment.class;
         }
 

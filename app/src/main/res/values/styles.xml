@@ -23,7 +23,7 @@
         <!-- Used for the title and text -->
         <item name="android:textColorPrimary">#FFFFFF</item>
         <!-- Used for the background -->
-        <item name="android:background">#534caf</item>
+        <item name="android:background">#830e10</item>
     </style>
 
 </resources>

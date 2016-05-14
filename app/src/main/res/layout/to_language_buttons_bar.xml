@@ -48,6 +48,13 @@
                 android:button="@android:color/transparent" />
 
             <RadioButton
+                android:id="@+id/btnToKurdish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_kurdish_selector"
+                android:button="@android:color/transparent" />
+
+            <RadioButton
                 android:id="@+id/btnToPortuguese"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

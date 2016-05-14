@@ -51,6 +51,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Proje Yöneticisi : Doğan Kılıç"
+                    android:textColor="@color/cardview_dark_background"
                     android:gravity="center"
                     android:padding="10dp" />
 

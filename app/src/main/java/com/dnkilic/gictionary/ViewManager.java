@@ -1,6 +1,5 @@
 package com.dnkilic.gictionary;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.RadioGroup;
 
@@ -87,6 +86,9 @@ public class ViewManager {
             case R.id.btnFromRussian:
                 selectedLanguage = Language.RUSSIAN;
                 break;
+            case R.id.btnFromKurdish:
+                selectedLanguage = Language.KURDISH;
+                break;
             case R.id.btnFromSpanish:
                 selectedLanguage = Language.SPANISH;
                 break;
@@ -155,6 +157,9 @@ public class ViewManager {
                 break;
             case R.id.btnToTurkish:
                 selectedLanguage = Language.TURKISH;
+                break;
+            case R.id.btnToKurdish:
+                selectedLanguage = Language.KURDISH;
                 break;
             default:
                 selectedLanguage = Language.ENGLISH;

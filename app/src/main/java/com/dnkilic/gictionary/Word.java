@@ -12,4 +12,14 @@ public class Word {
         mText = text;
         mMeaningList = meaningList;
     }
+
+    public String getWord()
+    {
+        return mText;
+    }
+
+    public ArrayList<String> getMeaningList()
+    {
+        return mMeaningList;
+    }
 }
