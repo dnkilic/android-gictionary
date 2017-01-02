@@ -32,8 +32,6 @@ public class DictionaryFragment extends Fragment implements TranslationListener 
     private View mProgressView;
     private long mLastClickTime = 0;
 
-    private AlertDialog.Builder mBuilder;
-
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -166,9 +164,9 @@ public class DictionaryFragment extends Fragment implements TranslationListener 
     }
 
     private void showErrorDialog(String error) {
-        mBuilder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
-        mBuilder.setMessage(error);
-        mBuilder.setPositiveButton(getResources().getString(R.string.btn_ok), null);
-        mBuilder.show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
+        builder.setMessage(error);
+        builder.setPositiveButton(getResources().getString(R.string.btn_ok), null);
+        builder.show();
     }
 }

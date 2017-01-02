@@ -1,15 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">Gictionary</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
-
     <!--
     <string name="credits_information">Bu uygulama 192 Saatte Android Programlama Öğren programı aracılığıyla oluşturulan ekip tarafından geliştirilmiştir.</string> TODO: Remove or change this placeholder text -->
-    <string name="credits_information">This application was developed by Doğan Kılıç &amp; his Workers Co.</string>
-    <string name="credits_project_manager" formatted="false">Manager : %s</string>
+
     <string name="credits_manager" translatable="false">Doğan Kılıç</string>
     <string name="credits_student_one" translatable="false">Begüm Balkıs</string>
     <string name="credits_student_two" translatable="false">Engin Özkurt</string>
@@ -20,9 +14,15 @@
     <string name="credits_student_seven" translatable="false">Sara Özdemir</string>
     <string name="pref_source_language" translatable="false">prefSelectedSourceLanguage</string>
     <string name="pref_destination_language" translatable="false">prefSelectedDestinationLanguage</string>
-    <string name="btn_ok">TAMAM</string>
-    <string name="settings_select_source_language" translatable="false">Select Default Source Language</string>
-    <string name="settings_select_destination_language" translatable="false">Select Default Destination Language</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="credits_information">This application was developed by Doğan Kılıç &amp; his Workers Co.</string>
+    <string name="credits_project_manager" formatted="false">Manager : %s</string>
+    <string name="btn_ok">OK</string>
+    <string name="settings_select_source_language">Select Default Source Language</string>
+    <string name="settings_select_destination_language">Select Default Destination Language</string>
 
 
     <string name="language_ar">Arabic</string>

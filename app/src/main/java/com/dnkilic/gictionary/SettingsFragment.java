@@ -61,7 +61,7 @@ public class SettingsFragment extends Fragment {
         {
             for(int i = 0 ; i < spinnerValues.length ; i++)
             {
-                if(selectedSourceLanguage.equals(spinnerValues[i]))
+                if(selectedSourceLanguage.equals(spinnerValues[i].toString()))
                 {
                     sourceLanguageSpinner.setSelection(i);
                 }
@@ -90,7 +90,7 @@ public class SettingsFragment extends Fragment {
         {
             for(int i = 0 ; i < spinnerValues.length ; i++)
             {
-                if(selectedDestinationLanguage.equals(spinnerValues[i]))
+                if(selectedDestinationLanguage.equals(spinnerValues[i].toString()))
                 {
                     destinationLanguageSpinner.setSelection(i);
                 }
