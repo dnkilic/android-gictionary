@@ -14,8 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+//TODO showcase eklenmeli
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private SearchView mSearchView;
 
@@ -55,8 +56,13 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
 
-        mSearchView =
-                (SearchView) menu.findItem(R.id.search).getActionView();
+        try
+        {
+            mSearchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
         return true;
     }

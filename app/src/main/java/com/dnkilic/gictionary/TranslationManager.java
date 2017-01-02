@@ -33,7 +33,7 @@ public class TranslationManager {
 
         if(fromLanguage.equals(destLanguage))
         {
-            mResponse.onError("Aynı dilde çevirme yapmayı denediniz.");
+            mResponse.onError("You cant translate identical languages");
         }
         else
         {
@@ -83,7 +83,7 @@ public class TranslationManager {
                                     }catch (Exception e)
                                     {
                                         e.printStackTrace();
-                                        mResponse.onError("Aranan kelime bulunamadı.");
+                                        mResponse.onError("Searched word can not be found.");
                                     }
 
                                     if(tucList != null)
@@ -119,21 +119,25 @@ public class TranslationManager {
                                                     for (int j=0 ; j < meanings.length() ; j++)
                                                     {
                                                         JSONObject meaning = meanings.getJSONObject(j);
-                                                        meaningList.add(meaning.getString("text"));
+
+                                                        if(!meaningList.contains(meaning.getString("text")))
+                                                        {
+                                                            meaningList.add(meaning.getString("text"));
+                                                        }
                                                     }
                                                 }
 
                                                 words.add(new Word(phrase.getString("text"), meaningList));
                                             }
-                                            else
+                                            /*else
                                             {
-                                                mResponse.onError("Aranan kelime bulunamadı.");
-                                            }
+                                                mResponse.onError("Searched word can not be found.");
+                                            }*/
                                         }
 
                                         if(words.isEmpty())
                                         {
-                                            mResponse.onError("Aranan kelime bulunamadı.");
+                                            mResponse.onError("Searched word can not be found.");
                                         }
                                         else
                                         {
@@ -142,12 +146,12 @@ public class TranslationManager {
                                     }
                                     else
                                     {
-                                        mResponse.onError("Aranan kelime bulunamadı.");
+                                        mResponse.onError("Searched word can not be found.");
                                     }
                                 }
                                 else
                                 {
-                                    mResponse.onError("Aranan kelime bulunamadı.");
+                                    mResponse.onError("Searched word can not be found.");
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -159,7 +163,7 @@ public class TranslationManager {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             error.printStackTrace();
-                            mResponse.onError("Bir server hatası oluştu.");
+                            mResponse.onError("Server error occurred");
                         }
                     }) {
                 @Override

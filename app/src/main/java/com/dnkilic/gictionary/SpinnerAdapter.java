@@ -8,15 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by SSTK on 10.05.2016.
- */
-public class SpinnerAdapter extends ArrayAdapter<String> {
+public class SpinnerAdapter extends ArrayAdapter<Language> {
 
-    private String [] mLanguages;
+    private Language [] mLanguages;
     private Context mContext;
 
-    public SpinnerAdapter(Context context, int resource, int textViewResourceId, String[] objects) {
+    public SpinnerAdapter(Context context, int resource, int textViewResourceId, Language[] objects) {
         super(context, resource, textViewResourceId, objects);
         mContext = context;
         mLanguages = objects;
@@ -43,87 +40,87 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
         switch (mLanguages[position])
         {
-            case "ARABIC":
+            case ARABIC:
                 ivFlag.setImageResource(R.drawable.flag_arabia);
                 tvLanguage.setText("Arabic");
                 break;
-            case "ARMENIAN":
+            case ARMENIAN:
                 ivFlag.setImageResource(R.drawable.flag_armenia);
                 tvLanguage.setText("Armenian");
                 break;
-            case "BOSNIAN":
+            case BOSNIAN:
                 ivFlag.setImageResource(R.drawable.flag_bosnia);
                 tvLanguage.setText("Bosnian");
                 break;
-            case "BULGARIAN":
+            case BULGARIAN:
                 ivFlag.setImageResource(R.drawable.flag_bulgaria);
                 tvLanguage.setText("Bulgarian");
                 break;
-            case "CHINESE":
+            case CHINESE:
                 ivFlag.setImageResource(R.drawable.flag_china);
                 tvLanguage.setText("Chinese");
                 break;
-            case "ENGLISH":
+            case ENGLISH:
                 ivFlag.setImageResource(R.drawable.flag_uk);
                 tvLanguage.setText("English");
                 break;
-            case "FRENCH":
+            case FRENCH:
                 ivFlag.setImageResource(R.drawable.flag_france);
                 tvLanguage.setText("French");
                 break;
-            case "GERMAN":
+            case GERMAN:
                 ivFlag.setImageResource(R.drawable.flag_germany);
                 tvLanguage.setText("German");
                 break;
-            case "GREEK":
+            case GREEK:
                 ivFlag.setImageResource(R.drawable.flag_greece);
                 tvLanguage.setText("Greek");
                 break;
-            case "HEBREW":
+            case HEBREW:
                 ivFlag.setImageResource(R.drawable.flag_israel);
                 tvLanguage.setText("Hebrew");
                 break;
-            case "HINDI":
+            case HINDI:
                 ivFlag.setImageResource(R.drawable.flag_india);
                 tvLanguage.setText("Hindi");
                 break;
-            case "ITALIAN":
+            case ITALIAN:
                 ivFlag.setImageResource(R.drawable.flag_italy);
                 tvLanguage.setText("Italy");
                 break;
-            case "JAPANESE":
+            case JAPANESE:
                 ivFlag.setImageResource(R.drawable.flag_japan);
                 tvLanguage.setText("Japanese");
                 break;
-            case "KURDISH":
+            case KURDISH:
                 ivFlag.setImageResource(R.drawable.flag_kurdistan);
                 tvLanguage.setText("Kurdish");
                 break;
-            case "PERSIAN":
+            case PERSIAN:
                 ivFlag.setImageResource(R.drawable.flag_iran);
                 tvLanguage.setText("Persian");
                 break;
-            case "PORTUGUESE":
+            case PORTUGUESE:
                 ivFlag.setImageResource(R.drawable.flag_portugal);
                 tvLanguage.setText("Portugal");
                 break;
-            case "RUSSIAN":
+            case RUSSIAN:
                 ivFlag.setImageResource(R.drawable.flag_russia);
                 tvLanguage.setText("Russian");
                 break;
-            case "SPANISH":
+            case SPANISH:
                 ivFlag.setImageResource(R.drawable.flag_spain);
                 tvLanguage.setText("Spanish");
                 break;
-            case "SWEDISH":
+            case SWEDISH:
                 ivFlag.setImageResource(R.drawable.flag_sweden);
                 tvLanguage.setText("Swedish");
                 break;
-            case "TURKISH":
+            case TURKISH:
                 ivFlag.setImageResource(R.drawable.flag_turkey);
                 tvLanguage.setText("Turkish");
                 break;
-            case "URDU":
+            case URDU:
                 ivFlag.setImageResource(R.drawable.flag_pakistan);
                 tvLanguage.setText("Urdu");
                 break;
@@ -131,6 +128,4 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
         return view;
     }
-
-
 }

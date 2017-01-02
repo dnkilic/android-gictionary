@@ -14,7 +14,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
             android:layout_gravity="center_horizontal"
             android:src="@android:drawable/star_on"/>
 

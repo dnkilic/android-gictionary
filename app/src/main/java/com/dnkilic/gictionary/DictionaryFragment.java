@@ -2,10 +2,9 @@ package com.dnkilic.gictionary;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.app.SearchManager;
 import android.content.Context;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -13,12 +12,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,25 +22,25 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 
-public class DictionaryFragment extends Fragment implements TranslationListener{
+public class DictionaryFragment extends Fragment implements TranslationListener {
 
     private TranslationManager mTranslationManager;
     private ViewManager mViewManager;
     private View mProgressView;
     private long mLastClickTime = 0;
 
+    private AlertDialog.Builder mBuilder;
+
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    public DictionaryFragment() {
-        // Required empty public constructor
-    }
+    private static String TAG = "Dictionary";
+
+    public DictionaryFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,20 +51,24 @@ public class DictionaryFragment extends Fragment implements TranslationListener{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
-        mViewManager = new ViewManager(view);
-        mViewManager.initializeButtons();
+        mViewManager = new ViewManager(view, getResources());
+
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String selectedSourceLanguage = sharedPref.getString(getResources().getString(R.string.pref_source_language), "");
+        String selectedDestinationLanguage = sharedPref.getString(getResources().getString(R.string.pref_destination_language), "");
+
+        mViewManager.initializeButtons(selectedSourceLanguage, selectedDestinationLanguage);
 
         mProgressView = view.findViewById(R.id.pbTranslate);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rvWords);
         mRecyclerView.setHasFixedSize(true);
 
-        mLayoutManager = new GridLayoutManager(getActivity(), 2);//StaggeredGridLayoutManager(2,1);//new LinearLayoutManager(getActivity());
+        mLayoutManager = new GridLayoutManager(getActivity(), 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
@@ -135,11 +135,8 @@ public class DictionaryFragment extends Fragment implements TranslationListener{
                 }
 
                 mLastClickTime = SystemClock.elapsedRealtime();
-
                 mTranslationManager.makeTranslationRequest(mViewManager.getSelectedSourceLanguage().toString(), mViewManager.getSelectedDestinationLanguage().toString(), query);
-               // mBtnTranslate.setEnabled(false);
                 showProgress(true);
-
                 return false;
             }
 
@@ -154,28 +151,24 @@ public class DictionaryFragment extends Fragment implements TranslationListener{
 
     @Override
     public void onSuccess(ArrayList<Word> words) {
-      //  mBtnTranslate.setEnabled(true);
         showProgress(false);
-        Log.e("deneme",words.toString());
+        Log.d(TAG ,words.toString());
 
         mAdapter = new WordAdapter(words);
         mRecyclerView.setAdapter(mAdapter);
-
-        //tv.setText(words.get(0).mText);
     }
 
     @Override
     public void onError(String localError) {
-       // mBtnTranslate.setEnabled(true);
         showProgress(false);
-        Log.w("deneme", localError);
+        Log.d(TAG, localError);
         showErrorDialog(localError);
     }
 
     private void showErrorDialog(String error) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
-        builder.setMessage(error);
-        builder.setPositiveButton("TAMAM", null);
-        builder.show();
+        mBuilder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
+        mBuilder.setMessage(error);
+        mBuilder.setPositiveButton(getResources().getString(R.string.btn_ok), null);
+        mBuilder.show();
     }
 }
