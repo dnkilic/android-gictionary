@@ -150,7 +150,7 @@ public class DictionaryFragment extends Fragment implements TranslationListener 
     @Override
     public void onSuccess(ArrayList<Word> words) {
         showProgress(false);
-        Log.d(TAG ,words.toString());
+        //Log.d(TAG ,words.toString());
 
         mAdapter = new WordAdapter(words);
         mRecyclerView.setAdapter(mAdapter);
@@ -159,7 +159,7 @@ public class DictionaryFragment extends Fragment implements TranslationListener 
     @Override
     public void onError(String localError) {
         showProgress(false);
-        Log.d(TAG, localError);
+        //Log.d(TAG, localError);
         showErrorDialog(localError);
     }
 

@@ -39,11 +39,11 @@ public class TranslationManager {
         {
             String URL = "https://glosbe.com/gapi_v0_1/translate?";
 
-            Log.d("com.dnkilic.gictionary", "Request : " + "from :" + fromLanguage + "\n" +
+            /*Log.d("com.dnkilic.gictionary", "Request : " + "from :" + fromLanguage + "\n" +
                     "dest :" + destLanguage + "\n" +
                     "phrase :" + phrase + "\n" +
                     "pretty :" + "true" + "\n" +
-                    "format :" + "json");
+                    "format :" + "json");*/
 
             Uri builtUri = Uri.parse(URL).buildUpon()
                     .appendQueryParameter("from", fromLanguage)
