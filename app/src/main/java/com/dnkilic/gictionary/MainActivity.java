@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment = null;
         Class fragmentClass = null;
 
-
         if (id == R.id.nav_dictionary)
         {
             if(mSearchView != null)

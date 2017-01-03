@@ -132,9 +132,9 @@ public class DictionaryFragment extends Fragment implements TranslationListener 
                     return false;
                 }
 
-                mLastClickTime = SystemClock.elapsedRealtime();
-                mTranslationManager.makeTranslationRequest(mViewManager.getSelectedSourceLanguage().toString(), mViewManager.getSelectedDestinationLanguage().toString(), query);
                 showProgress(true);
+                mLastClickTime = SystemClock.elapsedRealtime();
+                mTranslationManager.makeTranslationRequest(mViewManager.getSelectedSourceLanguage().toString(), mViewManager.getSelectedDestinationLanguage().toString(), query.trim());
                 return false;
             }
 
