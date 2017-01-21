@@ -2,6 +2,8 @@ package com.dnkilic.gictionary;
 
 import android.net.Uri;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -122,7 +124,10 @@ public class TranslationManager {
 
                                                         if(!meaningList.contains(meaning.getString("text")))
                                                         {
-                                                            meaningList.add(meaning.getString("text"));
+                                                            if(meaning.getString("language").equals(json.getString("dest")))
+                                                            {
+                                                                meaningList.add(meaning.getString("text"));
+                                                            }
                                                         }
                                                     }
                                                 }

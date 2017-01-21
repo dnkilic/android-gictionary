@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Gictionary.iml" filepath="$PROJECT_DIR$/Gictionary.iml" />
       <module fileurl="file://$PROJECT_DIR$/Gictionary.iml" filepath="$PROJECT_DIR$/Gictionary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-gictionary.iml" filepath="$PROJECT_DIR$/android-gictionary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
