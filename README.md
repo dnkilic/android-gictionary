@@ -16,6 +16,8 @@ Screenshots
 
 ![](screenshots/oie_transparent.png)  ![](screenshots/oie_transparent-2.png)  ![](screenshots/oie_transparent-5.png)  ![](screenshots/oie_transparent-4.png)
 
+![](screenshots/oie_transparent-5.png)  ![](screenshots/oie_transparent-6.png)  ![](screenshots/oie_transparent-7.png)  ![](screenshots/oie_transparent-8.png)
+
 Developers
 --------
 Begüm Balkıs
