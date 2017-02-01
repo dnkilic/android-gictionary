@@ -11,6 +11,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.firebase.crash.FirebaseCrash;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,6 +61,8 @@ public class TranslationManager {
             try {
                 url = new URL(builtUri.toString());
             } catch (MalformedURLException e) {
+                FirebaseCrash.logcat(Log.ERROR, "Translation", "MalformedURLException caught");
+                FirebaseCrash.report(e);
                 e.printStackTrace();
             }
 
@@ -84,6 +87,8 @@ public class TranslationManager {
                                         tucList = json.getJSONArray("tuc");
                                     }catch (Exception e)
                                     {
+                                        FirebaseCrash.logcat(Log.ERROR, "Searched word can not be found.", "Exception caught");
+                                        FirebaseCrash.report(e);
                                         e.printStackTrace();
                                         mResponse.onError("Searched word can not be found.");
                                     }
@@ -100,6 +105,8 @@ public class TranslationManager {
                                             }
                                             catch (Exception e)
                                             {
+                                                FirebaseCrash.logcat(Log.ERROR, "getJSONObject(phrase).", "Exception caught");
+                                                FirebaseCrash.report(e);
                                                 e.printStackTrace();
                                             }
 
@@ -111,6 +118,8 @@ public class TranslationManager {
                                                     meanings = tuc.getJSONArray("meanings");
                                                 }
                                                 catch (Exception e){
+                                                    FirebaseCrash.logcat(Log.ERROR, "getJSONArray(meanings).", "Exception caught");
+                                                    FirebaseCrash.report(e);
                                                     e.printStackTrace();
                                                 }
 
@@ -159,6 +168,8 @@ public class TranslationManager {
                                     mResponse.onError("Searched word can not be found.");
                                 }
                             } catch (JSONException e) {
+                                FirebaseCrash.logcat(Log.ERROR, "General", "Exception caught");
+                                FirebaseCrash.report(e);
                                 e.printStackTrace();
                                 mResponse.onError(e.getMessage());
                             }

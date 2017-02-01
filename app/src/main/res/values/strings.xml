@@ -24,6 +24,7 @@
     <string name="settings_select_source_language">Select Default Source Language</string>
     <string name="settings_select_destination_language">Select Default Destination Language</string>
 
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
     <string name="language_ar">Arabic</string>
     <string name="language_hy">Armenian</string>

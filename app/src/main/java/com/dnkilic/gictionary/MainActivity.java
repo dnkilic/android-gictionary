@@ -10,13 +10,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private SearchView mSearchView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mSearchView = (SearchView) menu.findItem(R.id.search).getActionView();
         }
         catch (Exception e){
+            FirebaseCrash.logcat(Log.ERROR, "Searchview", "Exception caught");
+            FirebaseCrash.report(e);
             e.printStackTrace();
         }
 
@@ -103,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         try {
             fragment = (Fragment) fragmentClass.newInstance();
         } catch (Exception e) {
+            FirebaseCrash.logcat(Log.ERROR, "Fragment", "Exception caught");
+            FirebaseCrash.report(e);
             e.printStackTrace();
         }
 
