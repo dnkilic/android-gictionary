@@ -19,12 +19,19 @@
             android:weightSum="1" >
 
             <RadioButton
+                android:id="@+id/btnFromTurkish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_turkey_selector"
+                android:button="@android:color/transparent"
+                android:checked="true" />
+
+            <RadioButton
                 android:id="@+id/btnFromKurdish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_kurdish_selector"
-                android:button="@android:color/transparent"
-                android:checked="true"/>
+                android:button="@android:color/transparent"/>
 
             <RadioButton
                 android:id="@+id/btnFromArabic"
@@ -159,12 +166,6 @@
                 android:background="@drawable/flag_sweden_selector"
                 android:button="@android:color/transparent" />
 
-            <RadioButton
-                android:id="@+id/btnFromTurkish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/flag_turkey_selector"
-                android:button="@android:color/transparent" />
         </RadioGroup>
     </HorizontalScrollView>
 

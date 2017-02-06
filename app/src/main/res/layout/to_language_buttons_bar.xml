@@ -19,12 +19,26 @@
             android:weightSum="1" >
 
             <RadioButton
+                android:id="@+id/btnToEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_uk_selector"
+                android:button="@android:color/transparent"
+                android:checked="true" />
+
+            <RadioButton
                 android:id="@+id/btnToTurkish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_turkey_selector"
-                android:button="@android:color/transparent"
-                android:checked="true"/>
+                android:button="@android:color/transparent"/>
+
+            <RadioButton
+                android:id="@+id/btnToKurdish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_kurdish_selector"
+                android:button="@android:color/transparent" />
 
             <RadioButton
                 android:id="@+id/btnToSwedish"
@@ -45,13 +59,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/flag_russia_selector"
-                android:button="@android:color/transparent" />
-
-            <RadioButton
-                android:id="@+id/btnToKurdish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/flag_kurdish_selector"
                 android:button="@android:color/transparent" />
 
             <RadioButton
@@ -124,13 +131,6 @@
                 android:background="@drawable/flag_france_selector"
                 android:button="@android:color/transparent" />
 
-
-            <RadioButton
-                android:id="@+id/btnToEnglish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/flag_uk_selector"
-                android:button="@android:color/transparent" />
 
             <RadioButton
                 android:id="@+id/btnToChinese"
